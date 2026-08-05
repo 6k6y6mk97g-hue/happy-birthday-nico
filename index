@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Para mi Nico ❤️</title>
+  <style>
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg,#ff9ecf,#ffd6e8);
+      color:white;
+      text-align:center;
+      overflow-x:hidden;
+    }
+    .container{
+      padding:40px 20px;
+    }
+    .heart{
+      font-size:60px;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse{
+      0%{transform:scale(1);}
+      50%{transform:scale(1.15);}
+      100%{transform:scale(1);}
+    }
+    input{
+      padding:12px;
+      border:none;
+      border-radius:15px;
+      width:200px;
+      font-size:18px;
+      text-align:center;
+    }
+    button{
+      margin-top:15px;
+      padding:12px 25px;
+      border:none;
+      border-radius:20px;
+      background:white;
+      color:#ff4f9a;
+      font-weight:bold;
+      font-size:16px;
+    }
+    #secret{
+      display:none;
+      max-width:700px;
+      margin:auto;
+      text-align:left;
+      background: rgba(255,255,255,0.15);
+      padding:25px;
+      border-radius:25px;
+      backdrop-filter: blur(10px);
+    }
+    h1,h2{
+      text-align:center;
+    }
+    .counter{
+      font-size:20px;
+      margin:20px 0;
+      text-align:center;
+    }
+    .typing{
+      white-space: pre-wrap;
+      line-height:1.7;
+      font-size:17px;
+    }
+    .gallery{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      margin-top:20px;
+    }
+    .gallery img{
+      width:100%;
+      border-radius:18px;
+      border:2px solid white;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="lockScreen">
+    <div class="heart">💖</div>
+    <h1>For my favorite person</h1>
+    <p>Happy Birthday, Nico 🎂</p>
+    <p>Ingresa nuestro código especial</p>
+
+    <input type="password" id="code" placeholder="1103">
+    <br>
+    <button onclick="unlock()">Open</button>
+  </div>
+
+  <div id="secret">
+    <h1>Happy Birthday, My Nico ❤️</h1>
+
+    <div class="counter" id="counter"></div>
+
+    <h2>💌 Mi querido Nico</h2>
+    <div class="typing" id="letter"></div>
+
+    <h2>📸 Nuestros recuerdos</h2>
+    <div class="gallery">
+      <img src="https://picsum.photos/300/400?1">
+      <img src="https://picsum.photos/300/400?2">
+      <img src="https://picsum.photos/300/400?3">
+      <img src="https://picsum.photos/300/400?4">
+    </div>
+
+    <h2 style="text-align:center;margin-top:30px;">
+      No importa la distancia… siempre te elegiría a ti ♾️❤️
+    </h2>
+  </div>
+
+<script>
+const text = `No sé ni cómo comenzar, pero quería escribir esto realmente con el corazón.
+
+¿Quién hubiera imaginado que dos niños de 15 y 16 años que se conocieron de la manera más random posible podrían llegar a ser lo que somos ahora?
+
+Han pasado 3 años y aún recuerdo cuando eras un seco y yo una intensa tratando de cambiarte. A pesar de los errores, el amor siempre estuvo ahí.
+
+Supe que estaba enamorada de ti cuando eras la única persona con la que me imaginaba un futuro.
+
+Nunca imaginé que alguien pudiera hacerme sentir tanto estando a kilómetros de distancia.
+
+Te amo, en serio, mi infinito.
+
+Feliz cumpleaños, mi Nico ❤️`;
+
+let i = 0;
+
+function typeWriter(){
+  if(i < text.length){
+    document.getElementById("letter").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeWriter, 35);
+  }
+}
+
+function unlock(){
+  const code = document.getElementById("code").value;
+  if(code === "1103"){
+    document.getElementById("lockScreen").style.display = "none";
+    document.getElementById("secret").style.display = "block";
+    typeWriter();
+    updateCounter();
+  } else {
+    alert("Código incorrecto 💔");
+  }
+}
+
+function updateCounter(){
+  const start = new Date("2024-03-11");
+  const now = new Date();
+  const diff = now - start;
+
+  const days = Math.floor(diff / (1000*60*60*24));
+  document.getElementById("counter").innerHTML =
+    `Llevamos escribiendo nuestra historia desde el 11 de marzo de 2024<br><b>${days} días juntos ❤️</b>`;
+}
+</script>
+
+</body>
+</html>
